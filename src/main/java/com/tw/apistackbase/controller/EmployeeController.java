@@ -24,6 +24,12 @@ public class EmployeeController {
         return ResponseEntity.ok().body(result);
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity getOne(@PathVariable("id")Integer id) {
+        Employee employee = result.get(id);
+        return ResponseEntity.ok().body(employee);
+    }
+
     @PostMapping()
     public ResponseEntity create(@RequestBody Employee employee) {
         result.put(employee.getId(), employee);
@@ -33,7 +39,7 @@ public class EmployeeController {
     @DeleteMapping("/{id}")
     public ResponseEntity delete(@PathVariable(value = "id") Integer id) {
         Employee remove = result.remove(id);
-        return ResponseEntity.ok().body(String.format("you delete %1$s OK", remove.toString()));
+        return ResponseEntity.ok().body(String.format("you delete %1$s OK", remove.getName()));
     }
 
     @PutMapping("/{id}")
@@ -42,6 +48,6 @@ public class EmployeeController {
         employee1.setAge(employee.getAge());
         employee1.setGender(employee.getGender());
         employee1.setName(employee.getName());
-        return ResponseEntity.ok().build();
+        return ResponseEntity.ok().body("update successful: "+employee.getName());
     }
 }
