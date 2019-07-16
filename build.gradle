@@ -28,6 +28,8 @@ repositories {
 
 
 dependencies {
+    compileOnly 'org.projectlombok:lombok:1.18.2'
+    
     compile 'org.springframework.boot:spring-boot-starter-actuator'
     compile 'org.springframework.boot:spring-boot-starter-web'
 
